@@ -1,4 +1,3 @@
-
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
@@ -17,26 +16,27 @@ class Database {
         });
     }
 
-    static async getInstance() {
+    static getInstance() {
         if (!Database.instance) {
             Database.instance = new Database();
         }
         return Database.instance;
     }
 
+    async query(sql, params = []) {
+        try {
+            const [results] = await this.pool.execute(sql, params);
+            return results;
+        } catch (error) {
+            throw new Error(`Database query error: ${error.message}`);
+        }
+    }
+
     async getConnection() {
         return await this.pool.getConnection();
     }
-
-    async query(sql, params) {
-        const connection = await this.getConnection();
-        try {
-            const [results] = await connection.execute(sql, params);
-            return results;
-        } finally {
-            connection.release();
-        }
-    }
 }
 
-export default Database;
+const db = Database.getInstance();
+
+export default db;

@@ -1,16 +1,25 @@
 {
-  "name": "backend",
+  "name": "express-mysql-mvc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phanphoun/express-mysql-mvc.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "bugs": {
+    "url": "https://github.com/phanphoun/express-mysql-mvc/issues"
+  },
+  "homepage": "https://github.com/phanphoun/express-mysql-mvc#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
